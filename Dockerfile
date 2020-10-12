@@ -1,4 +1,6 @@
-#UPDATE-TIMESTAMP_20201012154503
+#ManuelUpdateTimestamp:20201012160431
+#AutomaticUpdateTimestamp:20201012160944
+
 FROM debian:latest
 RUN apt-get update && \
 	apt-get -y upgrade && \
