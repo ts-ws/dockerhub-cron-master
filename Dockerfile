@@ -1,5 +1,5 @@
-#ManuelUpdate: 20201012-113003
-#AutomaticUpdate: 20201012-113000
+#ManuelUpdate:20201012-113003
+#AutomaticUpdate:20201012-113000
 FROM debian:latest
 RUN apt-get update && \
 	apt-get -y upgrade && \
