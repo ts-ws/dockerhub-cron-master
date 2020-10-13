@@ -1,5 +1,5 @@
-#ManuelUpdate: 20201012-113000
-#AutomaticUpdate: 20201012-113000
+#ManualUpdateTimestamp:20201012113000
+#AutomaticUpdateTimestamp:20201012113000
 
 FROM debian:latest
 
