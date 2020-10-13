@@ -1,20 +1,15 @@
 image: tsws/cron-master:latest
 manifests:
-  - image: tsws/cron-master:amd64
+  - image: tsws/cron-master:latest-amd64
     platform:
       architecture: amd64
       os: linux
-#  - image: tsws/cron-master:arm32v5
-#    platform:
-#      architecture: arm
-#      os: linux
-#      variant: v5
-  - image: tsws/cron-master:arm32v7
+  - image: tsws/cron-master:latest-arm32v7
     platform:
       architecture: arm
       os: linux
       variant: v7
-  - image: tsws/cron-master:arm64v8
+  - image: tsws/cron-master:latest-arm64v8
     platform:
       architecture: arm64
       os: linux
