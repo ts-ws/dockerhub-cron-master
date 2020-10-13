@@ -1,13 +1,44 @@
 #ManualUpdateTimestamp:20201012113000
 #AutomaticUpdateTimestamp:20201013043434
 
-FROM debian:latest
+FROM ubuntu:latest
 
+MAINTAINER Technik Service Whitesheep <support@ts-ws.de>
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+#COPY ./main.cf /etc/postfix/main.cf
+
+#Update and Basic Apps
 RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get -y install htop && \
-    apt-get -y install apache2 php php-mysql
+    apt-get -y install bash curl psmisc  && \
+    apt-get -y install htop bmon nmon dnsutils iputils-ping net-tools  && \
+    apt-get -y install nano vim less gawk expect moreutils bsdmainutils  && \
+    apt-get -y install rsync sshpass git
 
-EXPOSE 80
+#Docker needed Apps
+RUN apt-get -y install cron rsyslog logrotate mysql-client
 
-CMD ["/usr/sbin/apache2ctl","-DFOREGROUND"]
+RUN apt-get -y install openssh-server && \
+    mkdir -p -m0755 /var/run/sshd
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postfix libsasl2-modules bsd-mailx
+
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+    /usr/sbin/dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get -y install python
+
+#apt cleanup
+RUN apt-get -y autoremove && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/log/apt
+
+EXPOSE 61000
+
+COPY ./entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
