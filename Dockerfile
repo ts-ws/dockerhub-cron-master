@@ -28,7 +28,7 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     /usr/sbin/dpkg-reconfigure -f noninteractive tzdata
 
 #Additional needed Apps
-RUN apt-get -y install python
+RUN apt-get -y install python unattended-upgrades
 
 #apt cleanup
 RUN apt-get -y autoremove && \
