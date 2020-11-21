@@ -1,5 +1,5 @@
 #ManualUpdateTimestamp:20201012113000
-#AutomaticUpdateTimestamp:20201121000507
+#AutomaticUpdateTimestamp:20201122000505
 
 FROM ubuntu:latest
 
